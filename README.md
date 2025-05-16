@@ -1,10 +1,9 @@
 # PIPA
 Prognosis-informed Phenotype Assignment (PIPA): A Novel Method for Unsupervised Discovery of Cell Phenotypes with Prognostic Significance in the Tumor Microenvironment
 
-## Initialization
+## Package installation
 ````
-# Package installation
-# devtools::install_github(SIgN-CI/PIPA')
+# devtools::install_github(BII-SIgN-ImmunoAI/PIPA')
 package_root_dir <- 'C:/Desktop'
 install.packages(file.path(package_root_dir,'PIPA.tar.gz'), repos = NULL, type = 'source')
 library(PIPA)
@@ -40,7 +39,7 @@ featureSelection_wrapper(data=cell_data_sub, surv_data=surv_data,
                          min_cluster_size= min_cluster_size)
 ````
 
-## build phenotyping model at each identified feature subsets at various detection rates (steps 2-4 & post-analysis viz)
+## Build phenotyping model at each identified feature subsets at various detection rates (steps 2-4 & post-analysis viz)
 ````
 # get folder names for each candidate feature subsets
 feature_subset_fnms <- list.files(path = step1_dir, pattern = "^detection_rate")
@@ -120,7 +119,7 @@ Viz_feature_UMAP(cell_data= cell_data_sub, downspl_size=100,                   p
 
 
 
-## Optimize parameter settings: min. detection rates for optimal feature selection in 'featureSelection_patientGrouping'
+## Optimize parameter settings: detection rate thresholds for optimal feature selection in 'featureSelection_wrapper'
 ````
 param_bnm='detection_rate'
 output_dir2 <- file.path(step1_dir, paste0("Viz_all_",param_bnm)); dir.create(output_dir2)
